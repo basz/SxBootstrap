@@ -30,7 +30,6 @@
     ],
     "require": {
         "php": ">=5.3.3",
-        "twitter/bootstrap": "*",
-        "rwoverdijk/assetmanager": "1.*"
+        "twitter/bootstrap": "*"
     }
 }
