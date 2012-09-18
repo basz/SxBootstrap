@@ -9,21 +9,6 @@
         "zend framework"
     ],
     "homepage": "https://github.com/RWOverdijk/SxBootstrap",
-
-    "repositories": [
-        {
-            "type": "package",
-            "package": {
-                "name": "twitter/bootstrap",
-                "version": "2.1.1",
-                "source": {
-                    "url": "git://github.com/twitter/bootstrap.git",
-                    "type": "git",
-                    "reference": "v2.1.1"
-                }
-            }
-        }
-    ],
     "require": {
         "php": ">=5.3.3",
         "twitter/bootstrap": "2.1.1"
