@@ -16,7 +16,7 @@
             "minimum-stability": "dev",
             "package": {
                 "name": "twitter/bootstrap",
-                "version": "2.1.1",
+                "version": "master",
                 "dist": {
                     "url": "https://github.com/twitter/bootstrap/zipball/master",
                     "type": "zip"
@@ -31,6 +31,6 @@
     ],
     "require": {
         "php": ">=5.3.3",
-        "twitter/bootstrap": "2.1.1"
+        "twitter/bootstrap": "*"
     }
 }
