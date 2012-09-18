@@ -23,7 +23,7 @@
                 },
                 "source": {
                     "url": "git://github.com/twitter/bootstrap.git",
-                    "type": "cvs",
+                    "type": "git",
                     "reference": "master"
                 }
             }
@@ -31,6 +31,6 @@
     ],
     "require": {
         "php": ">=5.3.3",
-        "twitter/bootstrap": "*"
+        "twitter/bootstrap": "master"
     }
 }
