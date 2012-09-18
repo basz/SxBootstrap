@@ -24,7 +24,7 @@
                 "source": {
                     "url": "git://github.com/twitter/bootstrap.git",
                     "type": "cvs",
-                    "reference": "tags/2.1.1"
+                    "reference": "master"
                 }
             }
         }
