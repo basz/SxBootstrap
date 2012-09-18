@@ -12,22 +12,21 @@
 
     "repositories": [
         {
-            "type": "package",
-            "minimum-stability": "dev",
-            "package": {
-                "name": "twitter/bootstrap",
-                "version": "master",
-                "dist": {
-                    "url": "https://github.com/twitter/bootstrap/zipball/master",
-                    "type": "zip"
-                },
-                "source": {
-                    "url": "git://github.com/twitter/bootstrap.git",
-                    "type": "git",
-                    "reference": "master"
-                }
-            }
-        }
+           "type": "package",
+           "package": {
+               "version": "master",
+               "name": "twitter/bootstrap",
+               "source": {
+                   "url": "https://github.com/twitter/bootstrap.git",
+                   "type": "git",
+                   "reference": "master"
+               },
+               "dist": {
+                   "url": "https://github.com/twitter/bootstrap/zipball/master",
+                   "type": "zip"
+               }
+           }
+       }
     ],
     "require": {
         "php": ">=5.3.3",
