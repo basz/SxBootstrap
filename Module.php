@@ -1,33 +1,23 @@
 <?php
-
 namespace SxBootstrap;
 
-class Module
+use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
+
+class Module implements AutoloaderProviderInterface
 {
-    public function getServiceConfig()
+    public function getAutoloaderConfig()
     {
         return array(
-            'asset_manager' => array(
-                'resolver_configs' => array(
-                    'collections' => array(
-                        'js/bootstrap.js' => array(
-                            'js/bootstrap-affix.js',
-                            'js/bootstrap-alert.js',
-                            'js/bootstrap-button.js',
-                            'js/bootstrap-carousel.js',
-                            'js/bootstrap-collapse.js',
-                        ),
-                    ),
-
-                    'map' => array(
-                        'js/bootstrap-affix.js' => 'vendor/twitter/bootstrap/js/bootstrap-affix.js',
-                        'js/bootstrap-alert.js' => 'vendor/twitter/bootstrap/js/bootstrap-alert.js',
-                        'js/bootstrap-button.js' => 'vendor/twitter/bootstrap/js/bootstrap-button.js',
-                        'js/bootstrap-carousel.js' => 'vendor/twitter/bootstrap/js/bootstrap-carousel.js',
-                        'js/bootstrap-collapse.js' =>'vendor/twitter/bootstrap/js/bootstrap-collapse.js',
-                    ),
+            'Zend\Loader\StandardAutoloader' => array(
+                'namespaces' => array(
+                    __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
                 ),
             ),
         );
+    }
+
+    public function getConfig()
+    {
+        return include __DIR__ . '/config/module.config.php';
     }
 }
