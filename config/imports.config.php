@@ -3,7 +3,6 @@
 return array(
     'reset.less',
     'mixins.less',
-    'variables.less',
     'scaffolding.less',
     'grid.less',
     'layouts.less',

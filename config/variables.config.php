@@ -1,7 +1,7 @@
 <?php
 
 return array(
-/*    'black'                               => '#000',
+    'black'                               => '#000',
     'grayDarker'                          => '#222',
     'grayDark'                            => '#333',
     'gray'                                => '#555',
@@ -156,4 +156,4 @@ return array(
     'fluidGridGutterWidth1200'            => 'percentage(@gridGutterWidth1200/@gridRowWidth1200)',
     'fluidGridColumnWidth768'             => 'percentage(@gridColumnWidth768/@gridRowWidth768)',
     'fluidGridGutterWidth768'             => 'percentage(@gridGutterWidth768/@gridRowWidth768)',
-*/);
+);
