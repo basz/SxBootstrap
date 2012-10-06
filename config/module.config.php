@@ -30,10 +30,6 @@ return array(
                     'js/bootstrap-typeahead.js',
                     'js/bootstrap-affix.js',
                 ),
-                'css/bootstrap.css' => array(
-                    'css/bootstrap-base.css',
-                    'css/bootstrap-responsive.css',
-                ),
             ),
             'map' => array(
                 'css/colorpicker.css'                => __DIR__ . '/../public/css/colorpicker.css',
