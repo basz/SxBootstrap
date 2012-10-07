@@ -30,6 +30,10 @@ return array(
                     'js/bootstrap-typeahead.js',
                     'js/bootstrap-affix.js',
                 ),
+                'css/bootstrap.css' => array(
+                    'css/bootstrap1.css',
+                    'css/colorpicker.css',
+                ),
             ),
             'map' => array(
                 'css/colorpicker.css'                => __DIR__ . '/../public/css/colorpicker.css',
@@ -39,7 +43,7 @@ return array(
                 'img/saturation.png'                 => __DIR__ . '/../public/img/saturation.png',
                 'img/glyphicons-halflings.png'       => 'vendor/twitter/bootstrap/img/glyphicons-halflings.png',
                 'img/glyphicons-halflings-white.png' => 'vendor/twitter/bootstrap/img/glyphicons-halflings-white.png',
-                'css/bootstrap.css'                  => 'vendor/twitter/bootstrap/less/bootstrap.less',
+                'css/bootstrap1.css'                  => 'vendor/twitter/bootstrap/less/bootstrap.less',
                 'js/bootstrap-affix.js'              => 'vendor/twitter/bootstrap/js/bootstrap-affix.js',
                 'js/bootstrap-alert.js'              => 'vendor/twitter/bootstrap/js/bootstrap-alert.js',
                 'js/bootstrap-button.js'             => 'vendor/twitter/bootstrap/js/bootstrap-button.js',
@@ -58,7 +62,7 @@ return array(
         'filters' => array(
             'css/bootstrap.css' => array(
                 array(
-                    'service'            => 'SxBootstrap\Service\BootstrapAssetFilter',
+                    'service' => 'SxBootstrap\Service\BootstrapAssetFilter',
                 ),
             ),
         ),
