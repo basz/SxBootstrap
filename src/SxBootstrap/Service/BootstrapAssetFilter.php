@@ -42,7 +42,6 @@ class BootstrapAssetFilter extends LessphpFilter implements ServiceLocatorAwareI
     {
         $root = $asset->getSourceRoot();
         $path = $asset->getSourcePath();
-        echo "$path\n";
         $lc   = new \lessc();
 
         $lc->setImportDir(array(dirname($root.'/'.$path)));
