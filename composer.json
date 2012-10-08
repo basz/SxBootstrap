@@ -12,5 +12,14 @@
     "require": {
         "php": ">=5.3.3",
         "rwoverdijk/assetmanager": "1.*"
+    },
+    ,
+    "autoload" : {
+        "psr-0": {
+            "SxBootstrap": "src/"
+        },
+        "classmap": [
+            "./"
+        ]
     }
 }
