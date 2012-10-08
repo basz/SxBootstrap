@@ -11,7 +11,7 @@
     "homepage": "https://github.com/RWOverdijk/SxBootstrap",
     "require": {
         "php": ">=5.3.3",
-        "twitter/bootstrap": "2.1.2",
+        "twitter/bootstrap": "dev-2.1.2-wip",
         "rwoverdijk/assetmanager": "1.*"
     }
 }
