@@ -13,63 +13,55 @@ return array(
         ),
     ),
     'asset_manager'   => array(
+        'resolvers' => array(
+            'SxBootstrap\Service\BootstrapResolver' => 1200,
+        ),
         'resolver_configs' => array(
-            'collections' => array(
-                'js/bootstrap.js' => array(
-                    'js/bootstrap-transition.js',
-                    'js/bootstrap-alert.js',
-                    'js/bootstrap-button.js',
-                    'js/bootstrap-carousel.js',
-                    'js/bootstrap-collapse.js',
-                    'js/bootstrap-dropdown.js',
-                    'js/bootstrap-modal.js',
-                    'js/bootstrap-tooltip.js',
-                    'js/bootstrap-popover.js',
-                    'js/bootstrap-scrollspy.js',
-                    'js/bootstrap-tab.js',
-                    'js/bootstrap-typeahead.js',
-                    'js/bootstrap-affix.js',
-                ),
-            ),
             'map' => array(
-                'css/colorpicker.css'                => __DIR__ . '/../public/css/colorpicker.css',
-                'js/bootstrap-colorpicker.js'        => __DIR__ . '/../public/js/bootstrap-colorpicker.js',
-                'img/alpha.png'                      => __DIR__ . '/../public/img/alpha.png',
-                'img/hue.png'                        => __DIR__ . '/../public/img/hue.png',
-                'img/saturation.png'                 => __DIR__ . '/../public/img/saturation.png',
-                'img/glyphicons-halflings.png'       => 'vendor/twitter/bootstrap/img/glyphicons-halflings.png',
-                'img/glyphicons-halflings-white.png' => 'vendor/twitter/bootstrap/img/glyphicons-halflings-white.png',
-                'css/bootstrap.css'                  => 'vendor/twitter/bootstrap/less/bootstrap.less',
-                'js/bootstrap-affix.js'              => 'vendor/twitter/bootstrap/js/bootstrap-affix.js',
-                'js/bootstrap-alert.js'              => 'vendor/twitter/bootstrap/js/bootstrap-alert.js',
-                'js/bootstrap-button.js'             => 'vendor/twitter/bootstrap/js/bootstrap-button.js',
-                'js/bootstrap-carousel.js'           => 'vendor/twitter/bootstrap/js/bootstrap-carousel.js',
-                'js/bootstrap-collapse.js'           => 'vendor/twitter/bootstrap/js/bootstrap-collapse.js',
-                'js/bootstrap-dropdown.js'           => 'vendor/twitter/bootstrap/js/bootstrap-dropdown.js',
-                'js/bootstrap-modal.js'              => 'vendor/twitter/bootstrap/js/bootstrap-modal.js',
-                'js/bootstrap-popover.js'            => 'vendor/twitter/bootstrap/js/bootstrap-popover.js',
-                'js/bootstrap-scrollspy.js'          => 'vendor/twitter/bootstrap/js/bootstrap-scrollspy.js',
-                'js/bootstrap-tab.js'                => 'vendor/twitter/bootstrap/js/bootstrap-tab.js',
-                'js/bootstrap-tooltip.js'            => 'vendor/twitter/bootstrap/js/bootstrap-tooltip.js',
-                'js/bootstrap-transition.js'         => 'vendor/twitter/bootstrap/js/bootstrap-transition.js',
-                'js/bootstrap-typeahead.js'          => 'vendor/twitter/bootstrap/js/bootstrap-typeahead.js',
+                'css/colorpicker.css'                    => __DIR__ . '/../public/css/colorpicker.css',
+                'js/bootstrap-colorpicker.js'            => __DIR__ . '/../public/js/bootstrap-colorpicker.js',
+                'img/alpha.png'                          => __DIR__ . '/../public/img/alpha.png',
+                'img/hue.png'                            => __DIR__ . '/../public/img/hue.png',
+                'img/saturation.png'                     => __DIR__ . '/../public/img/saturation.png',
+                'img/glyphicons-halflings.png'           => 'vendor/twitter/bootstrap/img/glyphicons-halflings.png',
+                'img/glyphicons-halflings-white.png'     => 'vendor/twitter/bootstrap/img/glyphicons-halflings-white.png',
+                'css/bootstrap.css'                      => 'vendor/twitter/bootstrap/less/bootstrap.less',
+            ),
+            'paths' => array(
+                'vendor/twitter/bootstrap',
             ),
         ),
         'filters' => array(
             'css/bootstrap.css' => array(
                 array(
-                    'service'            => 'SxBootstrap\Service\BootstrapAssetFilter',
+                    'service' => 'SxBootstrap\Service\BootstrapFilter',
                 ),
             ),
         ),
     ),
     'service_manager' => array (
         'factories' => array (
-            'SxBootstrap\Service\BootstrapAssetFilter' => 'SxBootstrap\Service\BootstrapAssetFilterServiceFactory',
+            'SxBootstrap\Service\BootstrapFilter' => function($serviceManager) {
+                $config             = $serviceManager->get('Config');
+                $bootstrapConfig    = $config['twitter_bootstrap'];
+                $BootstrapFilter    = new SxBootstrap\Service\BootstrapFilter($bootstrapConfig);
+
+                $BootstrapFilter->setServiceLocator($serviceManager);
+
+                return $BootstrapFilter;
+            },
+            'SxBootstrap\Service\BootstrapResolver' => function($serviceManager) {
+                $config             = $serviceManager->get('Config');
+                $bootstrapConfig    = $config['twitter_bootstrap'];
+                $assetFilterManager = new SxBootstrap\Service\BootstrapResolver($bootstrapConfig);
+
+                return $assetFilterManager;
+            },
         ),
     ),
     'twitter_bootstrap' => array(
-        'variables'    => include 'variables.config.php',
-        'import_files' => include 'imports.config.php',
+        'variables'     => array(),                         // Overriding twitter Bootstrap variables.
+        'plugin_files'  => include 'plugins.config.php',
+        'plugin_alias'  => 'js/bootstrap.js',
     ),
 );

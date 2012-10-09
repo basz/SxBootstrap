@@ -1,23 +1,7 @@
 <?php
-namespace SxBootstrap;
-
-use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
-
-class Module implements AutoloaderProviderInterface
-{
-    public function getAutoloaderConfig()
-    {
-        return array(
-            'Zend\Loader\StandardAutoloader' => array(
-                'namespaces' => array(
-                    __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
-                ),
-            ),
-        );
-    }
-
-    public function getConfig()
-    {
-        return include __DIR__ . '/config/module.config.php';
-    }
-}
+/**
+ * This file is placed here for compatibility with Zendframework 2's ModuleManager.
+ * It allows usage of this module even without composer.
+ * The original Module.php is in 'src/SxBootstrap' in order to respect PSR-0
+ */
+require_once __DIR__ . '/src/SxBootstrap/Module.php';
