@@ -11,7 +11,8 @@
     "homepage": "https://github.com/RWOverdijk/SxBootstrap",
     "require": {
         "php": ">=5.3.3",
-        "rwoverdijk/assetmanager": "1.*"
+        "rwoverdijk/assetmanager": "1.*",
+        "leafo/lessphp": "*"
     },
     "autoload" : {
         "psr-0": {

@@ -16,6 +16,8 @@ use SxBootstrap\Exception;
  * After creating this element, manually call "$('colorpicker').colorpicker();"
  *
  * @see http://www.eyecon.ro/bootstrap-colorpicker/
+ *
+ * @todo Refactor to use less files, and improve code.
  */
 class FormColorPicker extends FormInput
 {
@@ -61,6 +63,11 @@ class FormColorPicker extends FormInput
         return parent::__invoke($element);
     }
 
+    /**
+     * Put together the colorpicker component.
+     *
+     * @param Zend\Form\Element $element
+     */
     protected function assembleComponent($element)
     {
         $options   = $this->getOptions();
@@ -101,6 +108,9 @@ class FormColorPicker extends FormInput
         return $element;
     }
 
+    /**
+     * Handle the dependencies (inline, head and / or leave alone)
+     */
     protected function handleDependencies()
     {
         $options = $this->getOptions();
