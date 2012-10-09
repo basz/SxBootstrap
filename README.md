@@ -7,6 +7,7 @@ Currently it supports enabling/disabling components and overriding variables.
 
 1. Preparation is required. Because twitter bootstrap is not in composer,
 you'll have to add the repository to your composer.json file:
+
 ```json
     "repositories": [
         {
