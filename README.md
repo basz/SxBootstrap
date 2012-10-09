@@ -64,7 +64,7 @@ things are working you can simply call the view helper in your layout (before ou
 ```
 
 Refresh the page and see if it downloaded the required files. Please **realize** that this module
-will take up to 2 seconds (depending on your server's power) to load **every time**,
+will take up to 2 seconds (depending on your server's performance) to load **every time**,
 so please enable caching of some sort [(read about it here, the FilePath cache is recommended)](https://github.com/RWOverdijk/AssetManager/wiki/Caching).
 
 ## Todo
