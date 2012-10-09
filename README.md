@@ -49,19 +49,23 @@ you'll have to add the following repository to your composer.json file:
         }
         ```
 
-3. Enable `SxBootstrap` in your `application.config.php` file.
+3. Enable `AssetManager` and `SxBootstrap` in your `application.config.php` file.
 
 4. Take a look at the [wiki](https://github.com/RWOverdijk/SxBootstrap/wiki) for examples and other information to get started.
 
 ## Usage
-I'm not going into detail here, as you can find all of the information in the wiki. But to test if
-things are working you can simply call the view helper in your layout (before outputting headscript!):
+I'm not going into detail here, as you can find all of the information in the [wiki](https://github.com/RWOverdijk/SxBootstrap/wiki). But to test if
+things are working you can simply call the view helper in your layout (before outputting headscript/headlink!):
 
 ```php
 
 <?php $this->bootstrap(); ?>
 
 ```
+
+Refresh the page and see if it downloaded the required files. Please **realize** that this module
+will take up to 2 seconds (depending on your server's power) to load **every time**,
+so please enable caching of some sort [(read about it here, the FilePath cache is recommended)](https://github.com/RWOverdijk/AssetManager/wiki/Caching).
 
 ## Todo
 There's still a lot of work to be done on this module.
