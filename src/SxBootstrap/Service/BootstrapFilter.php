@@ -42,19 +42,23 @@ class BootstrapFilter extends LessphpFilter implements ServiceLocatorAwareInterf
         $importDir = dirname($root.'/'.$path);
 
         $lc->setImportDir(array($importDir));
-        $lc->setVariables(array_merge(
-            $this->extractVariables($importDir.'/variables.less'),
-            $this->config['variables']
-        ));
+        $lc->setVariables(
+            array_merge(
+                $this->extractVariables($importDir.'/variables.less'),
+                $this->config['variables']
+            )
+        );
 
-        $asset->setContent($lc->parse(
-            $this->filterImportFiles(
-                array_merge(
-                    $this->extractImports($importDir.'/bootstrap.less'),
-                    $this->extractImports($importDir.'/responsive.less')
+        $asset->setContent(
+            $lc->parse(
+                $this->filterImportFiles(
+                    array_merge(
+                        $this->extractImports($importDir.'/bootstrap.less'),
+                        $this->extractImports($importDir.'/responsive.less')
+                    )
                 )
             )
-        ));
+        );
     }
 
     /**
@@ -142,6 +146,7 @@ class BootstrapFilter extends LessphpFilter implements ServiceLocatorAwareInterf
 
     /**
      * Remove everything from the import config except for the values in $config
+     *
      * @param array $config
      */
     protected function addImportFiles(array $importFiles, array $config)

@@ -8,6 +8,9 @@ return array(
     'view_helpers' => array(
         'invokables' => array(
             'tabs'            => 'SxBootstrap\View\Helper\Bootstrap\Tabs',
+            'alert'           => 'SxBootstrap\View\Helper\Bootstrap\Alert',
+            'badge'           => 'SxBootstrap\View\Helper\Bootstrap\Badge',
+            'label'           => 'SxBootstrap\View\Helper\Bootstrap\Label',
             'formColorpicker' => 'SxBootstrap\View\Helper\Bootstrap\FormColorPicker',
             'bootstrap'       => 'SxBootstrap\View\Helper\Bootstrap\Bootstrap',
         ),
