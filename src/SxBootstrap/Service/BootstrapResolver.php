@@ -50,8 +50,9 @@ class BootstrapResolver implements
     }
 
     /**
-     * put your comment there...
+     * Resolve to the plugins for this module (expand).
      *
+     * @return AssetCollection
      */
     protected function resolvePlugins()
     {
