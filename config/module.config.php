@@ -49,8 +49,6 @@ return array(
                 $bootstrapConfig    = $config['twitter_bootstrap'];
                 $BootstrapFilter    = new SxBootstrap\Service\BootstrapFilter($bootstrapConfig);
 
-                $BootstrapFilter->setServiceLocator($serviceManager);
-
                 return $BootstrapFilter;
             },
             'SxBootstrap\Service\BootstrapResolver' => function($serviceManager) {

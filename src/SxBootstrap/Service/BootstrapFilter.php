@@ -5,10 +5,8 @@ namespace SxBootstrap\Service;
 use Assetic\Asset\AssetInterface;
 use Assetic\Filter\LessFilter;
 use SxBootstrap\Exception;
-use Zend\ServiceManager\ServiceLocatorInterface;
-use Zend\ServiceManager\ServiceLocatorAwareInterface;
 
-class BootstrapFilter extends LessFilter implements ServiceLocatorAwareInterface
+class BootstrapFilter extends LessFilter
 {
     /**
      * @var ServiceLocatorInterface
@@ -135,7 +133,7 @@ class BootstrapFilter extends LessFilter implements ServiceLocatorAwareInterface
             $val = "@import \"$val\";";
         });
 
-        return implode(PHP_EOL,$imports);
+        return implode(PHP_EOL, $imports);
     }
 
     /**
@@ -175,21 +173,5 @@ class BootstrapFilter extends LessFilter implements ServiceLocatorAwareInterface
      */
     public function filterDump(AssetInterface $asset)
     {
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getServiceLocator()
-    {
-        return $this->serviceLocator;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setServiceLocator(ServiceLocatorInterface $serviceLocator)
-    {
-        $this->serviceLocator = $serviceLocator;
     }
 }
