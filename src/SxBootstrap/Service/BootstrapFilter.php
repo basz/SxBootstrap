@@ -3,12 +3,10 @@
 namespace SxBootstrap\Service;
 
 use Assetic\Asset\AssetInterface;
-use Assetic\Filter\LessphpFilter;
+use Assetic\Filter\LessFilter;
 use SxBootstrap\Exception;
-use Zend\ServiceManager\ServiceLocatorInterface;
-use Zend\ServiceManager\ServiceLocatorAwareInterface;
 
-class BootstrapFilter extends LessphpFilter implements ServiceLocatorAwareInterface
+class BootstrapFilter extends LessFilter
 {
     /**
      * @var ServiceLocatorInterface
@@ -27,6 +25,11 @@ class BootstrapFilter extends LessphpFilter implements ServiceLocatorAwareInterf
     public function __construct(array $config)
     {
         $this->config = $config;
+
+        parent::__construct(
+            $this->config['filter']['node_bin'],
+            $this->config['filter']['node_paths']
+        );
     }
 
     /**
@@ -38,27 +41,32 @@ class BootstrapFilter extends LessphpFilter implements ServiceLocatorAwareInterf
     {
         $root      = $asset->getSourceRoot();
         $path      = $asset->getSourcePath();
-        $lc        = new \lessc();
         $importDir = dirname($root.'/'.$path);
 
-        $lc->setImportDir(array($importDir));
-        $lc->setVariables(
-            array_merge(
-                $this->extractVariables($importDir.'/variables.less'),
-                $this->config['variables']
-            )
+        $variables = array_merge(
+            $this->extractVariables($importDir.'/variables.less'),
+            $this->config['variables']
         );
 
-        $asset->setContent(
-            $lc->parse(
-                $this->filterImportFiles(
-                    array_merge(
-                        $this->extractImports($importDir.'/bootstrap.less'),
-                        $this->extractImports($importDir.'/responsive.less')
-                    )
+        $imports   = $this->filterImportFiles(
+            array_unique(
+                array_merge(
+                    $this->extractImports($importDir.'/bootstrap.less'),
+                    $this->extractImports($importDir.'/responsive.less')
                 )
             )
         );
+
+        $variablesString = '';
+
+        foreach ($variables as $key => $value) {
+            $variablesString .= "@$key:$value;".PHP_EOL;
+        }
+
+        $assetContent = $variablesString . $imports;
+        $asset->setContent($assetContent);
+
+        parent::filterLoad($asset);
     }
 
     /**
@@ -73,7 +81,7 @@ class BootstrapFilter extends LessphpFilter implements ServiceLocatorAwareInterf
 
         preg_match_all('/@import "(?!variables)(?<imports>[\w-_\.]+)";/', $str, $matches);
 
-        return $matches['imports'];
+        return array_map('trim', $matches['imports']);
     }
 
     /**
@@ -165,21 +173,5 @@ class BootstrapFilter extends LessphpFilter implements ServiceLocatorAwareInterf
      */
     public function filterDump(AssetInterface $asset)
     {
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getServiceLocator()
-    {
-        return $this->serviceLocator;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setServiceLocator(ServiceLocatorInterface $serviceLocator)
-    {
-        $this->serviceLocator = $serviceLocator;
     }
 }
